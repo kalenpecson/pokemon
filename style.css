@@ -1,0 +1,29 @@
+
+.picture{
+    position: relative;
+}
+.picture:hover{
+    height: 110%;
+}
+
+#search{
+    position: relative;
+}
+img{
+    position: relative;
+}
+#images {
+    position: relative;
+    margin-top: 30px;
+}
+#info{
+    border: double black 2px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: 270px;
+    margin-right: 270px;
+    z-index: 2;
+    text-align: center ;
+    background-color: white;
+}
