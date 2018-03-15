@@ -24,17 +24,39 @@ $(document).ready(function(){
         $(this).animate({"bottom":"0"}, 300);
     });
     $("img").on("click",function(){
-        var imgobj=$(this).data();
-        var name= imgobj.name;
-        console.log(name);
-        $("#info").show().text(name);
-            var imagelink= $(this).attr("src");
-            selectedimages.push(imagelink);
+        $("img").removeClass("sticker");
+        $(this).addClass("sticker");
+        // var imgobj=$(this).data();
+        // console.log(imgobj);
+        // var name= imgobj.name;
+        // console.log(imgobj.name);
+        // var types= imgobj.types;
+        // var rare= imgobj.rarity;
+        // console.log(name);
+        // var pic=imgobj.imageUrl;
+        // $("#info").show().text("").children("#save").remove();
+        // $("#demo").attr("src",pic);
+        // document.getElementById ("info").innerHTML+= name+"<br>"+rare +"<br> <button id='save' onclick='save()'>Save</button>";
+        //
+
+
+
+        ADD TABLE
+
+
+
     });
     $("#registered").on("click",function(){
         arraytoimage(selectedimages);
     })
 });
+
+function save(){
+    var imagelink= $(".sticker").attr("src");
+    selectedimages.push(imagelink);
+    $(".sticker").removeClass("sticker");
+    $("#info").hide();
+}
 
 var selectedimages=[];
 var emptyarray=[];
@@ -42,7 +64,6 @@ function arraytoimage(array){
     var picture="";
     for(var i=0;i<50;i++){
         picture=array[i];
-
         $("#img"+(i+1)).attr('src',"").attr('src',picture);
     }
 }
@@ -60,6 +81,7 @@ function myFunction(result){
         }
     }
     if(amount>50){
+        $("p").text("Page 1/2");
         for (var i=0; i<50; i++){
             picture= result.cards[i].imageUrl;
             $("#img"+(i+1)).attr("src","").attr('src',picture).data(result.cards[i]);
@@ -68,11 +90,11 @@ function myFunction(result){
         $("p").show();
         $("#more").on("click", function(){
             $("p").text("Page 2/2");
+            arraytoimage(emptyarray);
             for(var i=0;i<50;i++){
                 picture= result.cards[50+i].imageUrl;
                 $("#img"+(i+1)).attr('src',picture).data(result.cards[i+50]);
             }
         })
     }
-    console.log($("#img1").data())
 }

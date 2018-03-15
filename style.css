@@ -1,9 +1,19 @@
+h1{
+    text-align: center ;
+    background-color: red;
+    margin-top: 0;
+    height: 90px;
+    color: gold;
 
+}
 .picture{
     position: relative;
 }
 .picture:hover{
     height: 110%;
+}
+#inputs{
+    text-align: center ;
 }
 
 #search{
@@ -11,19 +21,31 @@
 }
 img{
     position: relative;
+    padding: 7px;
+
 }
 #images {
     position: relative;
     margin-top: 30px;
+    text-align: center ;
 }
 #info{
     border: double black 2px;
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
     margin-left: 270px;
     margin-right: 270px;
     z-index: 2;
-    text-align: center ;
+    text-align: left;
     background-color: white;
+    overflow: auto;
+    min-height: 400px;
+}
+
+#demo{
+    top: 10;
+    right: 0;
+    position: absolute;
+    padding:0;
 }
