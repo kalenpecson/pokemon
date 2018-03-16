@@ -23,15 +23,17 @@ $(document).ready(function(){
     $("img").on("mouseleave",function() {
         $(this).animate({"bottom":"0"}, 300);
     });
+    $("#cancel").on("click",function(){
+        $("#info").hide();
+    });
     $("img").on("click",function(){
+        $("#aspects").empty();
         $("img").removeClass("sticker");
         $(this).addClass("sticker");
         var imgobj=$(this).data();
         console.log(imgobj);
-        var name= imgobj.name;
-        var types= imgobj.types[0];
-        var rare= imgobj.rarity;
-        console.log(name);
+        var name=imgobj.name;
+        $("h2").text(name);
         var pic=imgobj.imageUrl;
         $("#info").show().val("");
         $("#demo").attr("src",pic);
@@ -50,8 +52,8 @@ $(document).ready(function(){
         arraytoimage(selectedimages);
     })
 });
-var aspectarray=["Name","Rarity","HP","National Pokedex Number","Type","Weaknesses","Resistances"];
-var keystouse=["name","rarity","hp","nationalPokedexNumber","types","weaknesses","resistances"];
+var aspectarray=["Rarity","HP","National Pokedex Number","Type","Weaknesses","Resistances"];
+var keystouse=["rarity","hp","nationalPokedexNumber","types","weaknesses","resistances"];
 function save(){
     var imagelink= $(".sticker").attr("src");
     selectedimages.push(imagelink);
@@ -62,6 +64,7 @@ function save(){
 var selectedimages=[];
 var emptyarray=[];
 function arraytoimage(array){
+    $("p").show().text("Page 1/1");
     var picture="";
     for(var i=0;i<50;i++){
         picture=array[i];

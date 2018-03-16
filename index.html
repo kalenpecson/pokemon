@@ -8,7 +8,21 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-<h1>Pokémon</h1>
+<header>
+    <table id="tableheader">
+        <tr>
+            <td>    <img src="https://cdn.bulbagarden.net/upload/thumb/4/41/130Gyarados.png/250px-130Gyarados.png" id="pikachu2"></td>
+            <td>    <img src="https://cdn.bulbagarden.net/upload/thumb/8/8a/483Dialga.png/250px-483Dialga.png" id="pikachu2"></td>
+            <td>    <img src="http://static.pokemonpets.com/images/monsters-images-300-300/2025-Shiny-Pikachu.png" id="pikachu1"></td>
+            <td>    <div id="header">Pokémon</div></td>
+            <td>    <img src="https://cdn.bulbagarden.net/upload/thumb/6/66/484Palkia.png/250px-484Palkia.png" id="pikachu2"></td>
+            <td>    <img src="https://cdn.bulbagarden.net/upload/thumb/f/fb/143Snorlax.png/250px-143Snorlax.png" id="pikachu2"></td>
+            <td>    <img src="https://cdn.bulbagarden.net/upload/thumb/7/78/150Mewtwo.png/250px-150Mewtwo.png" id="pikachu2"></td>
+
+        </tr>
+    </table>
+</header>
+
 <div id="inputs">
     <button id="search">Search</button>
     <button id="more">Next Page</button>
@@ -17,11 +31,13 @@
     <p>Page 1/2</p>
 </div>
 <div id="info">
+    <h2></h2>
     <table id="aspects">
     </table>
     <img id="demo">
     <br>
     <button id="save" onclick="save()" >Save</button>
+    <button id="cancel">Exit</button>
 </div>
 <div id="images">
     <img id="img1">

@@ -1,10 +1,22 @@
-h1{
+#header{
     text-align: center ;
-    background-color: red;
     margin-top: 0;
-    height: 90px;
     color: gold;
+    margin-right: 100px;
+    margin-left: 100px;
+    font-weight: bold;
+    font-size: xx-large;
 
+
+}
+#tableheader {
+    margin: auto ;
+}
+header{
+    text-align: center ;
+    height: 90px;
+    background-color: red;
+    margin-bottom: 30px;
 }
 .picture{
     position: relative;
@@ -53,4 +65,38 @@ img{
 #aspects{
     margin-right: 100px;
     position: absolute;
+    border-spacing: 10px;
+    border-collapse: separate;
+}
+#save{
+    position: absolute;
+    bottom:0;
+    border-radius: 15px;
+    padding: 10px 20px;
+    background-color: grey;
+}
+#cancel{
+    position: absolute;
+    bottom:0;
+    border-radius: 15px;
+    padding: 10px 20px;
+    background-color: grey;
+    margin-left: 70px;
+}
+h2{
+    text-align: center ;
+    color: red;
+    text-shadow: 2px 2px gold;
+    font-weight: bold;
+
+}
+#pikachu1{
+    margin-right:10px;
+    height:80px;
+    width:82px
+}
+#pikachu2{
+    margin-left:10px;
+    height:80px;
+    width:82px
 }
