@@ -26,31 +26,32 @@ $(document).ready(function(){
     $("img").on("click",function(){
         $("img").removeClass("sticker");
         $(this).addClass("sticker");
-        // var imgobj=$(this).data();
-        // console.log(imgobj);
-        // var name= imgobj.name;
-        // console.log(imgobj.name);
-        // var types= imgobj.types;
-        // var rare= imgobj.rarity;
-        // console.log(name);
-        // var pic=imgobj.imageUrl;
-        // $("#info").show().text("").children("#save").remove();
-        // $("#demo").attr("src",pic);
-        // document.getElementById ("info").innerHTML+= name+"<br>"+rare +"<br> <button id='save' onclick='save()'>Save</button>";
-        //
-
-
-
-        ADD TABLE
-
-
-
+        var imgobj=$(this).data();
+        console.log(imgobj);
+        var name= imgobj.name;
+        var types= imgobj.types[0];
+        var rare= imgobj.rarity;
+        console.log(name);
+        var pic=imgobj.imageUrl;
+        $("#info").show().val("");
+        $("#demo").attr("src",pic);
+        for(key in imgobj){
+                if(keystouse.indexOf(key)!=-1){
+                    var a = imgobj[key];
+                    if(key == "weaknesses"|| key=="resistances"){
+                        a= a[0].type +" "+ a[0].value;
+                    }
+                    var b= keystouse.indexOf(key);
+                    document.getElementById("aspects").innerHTML+="<tr><td>"+aspectarray[b]+"</td><td>"+a+"</td></tr>"
+            }
+        }
     });
     $("#registered").on("click",function(){
         arraytoimage(selectedimages);
     })
 });
-
+var aspectarray=["Name","Rarity","HP","National Pokedex Number","Type","Weaknesses","Resistances"];
+var keystouse=["name","rarity","hp","nationalPokedexNumber","types","weaknesses","resistances"];
 function save(){
     var imagelink= $(".sticker").attr("src");
     selectedimages.push(imagelink);

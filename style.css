@@ -44,8 +44,13 @@ img{
 }
 
 #demo{
-    top: 10;
+    top: 0;
     right: 0;
     position: absolute;
     padding:0;
+}
+
+#aspects{
+    margin-right: 100px;
+    position: absolute;
 }
