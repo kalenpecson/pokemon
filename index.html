@@ -5,94 +5,122 @@
     <title>Title</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="script.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+
+
+<div id="pop">
+    <b>Make A New Deck</b>
+    <div id="contentPop">
+        <input id="deckname" placeholder="Deck Name">
+        <input id="creator" placeholder="Creator">
+    </div>
+    <button id="makenew"  onclick="makedeck()" class="close"  >Save</button>
+    <button class="close">Cancel</button>
+</div>
+
+<div id="mask">
+</div>
+
 <header>
+
     <table id="tableheader">
         <tr>
-            <td>    <img src="https://cdn.bulbagarden.net/upload/thumb/4/41/130Gyarados.png/250px-130Gyarados.png" id="pikachu2"></td>
-            <td>    <img src="https://cdn.bulbagarden.net/upload/thumb/8/8a/483Dialga.png/250px-483Dialga.png" id="pikachu2"></td>
-            <td>    <img src="http://static.pokemonpets.com/images/monsters-images-300-300/2025-Shiny-Pikachu.png" id="pikachu1"></td>
-            <td>    <div id="header">Pokémon</div></td>
-            <td>    <img src="https://cdn.bulbagarden.net/upload/thumb/6/66/484Palkia.png/250px-484Palkia.png" id="pikachu2"></td>
-            <td>    <img src="https://cdn.bulbagarden.net/upload/thumb/f/fb/143Snorlax.png/250px-143Snorlax.png" id="pikachu2"></td>
-            <td>    <img src="https://cdn.bulbagarden.net/upload/thumb/7/78/150Mewtwo.png/250px-150Mewtwo.png" id="pikachu2"></td>
+            <td>    <img src="https://cdn.bulbagarden.net/upload/thumb/4/41/130Gyarados.png/250px-130Gyarados.png"  class="headerimg"></td>
+            <td>    <img src="https://cdn.bulbagarden.net/upload/thumb/8/8a/483Dialga.png/250px-483Dialga.png" class="headerimg"></td>
+            <td>    <img src="http://static.pokemonpets.com/images/monsters-images-300-300/2025-Shiny-Pikachu.png" class="headerimg"></td>
+            <td>    <div id="header">Pokémon Card</div></td>
+            <td>    <img src="https://cdn.bulbagarden.net/upload/thumb/6/66/484Palkia.png/250px-484Palkia.png" class="headerimg"></td>
+            <td>    <img src="https://cdn.bulbagarden.net/upload/thumb/f/fb/143Snorlax.png/250px-143Snorlax.png" class="headerimg"></td>
+            <td>    <img src="https://cdn.bulbagarden.net/upload/thumb/7/78/150Mewtwo.png/250px-150Mewtwo.png" class="headerimg"></td>
 
         </tr>
     </table>
 </header>
 
 <div id="inputs">
-    <button id="search">Search</button>
-    <button id="more">Next Page</button>
-    <button id="registered">See Saved</button>
+    <button id="more" class="headerbutton">Next Page</button>
+    <button id="less" class="headerbutton">Previous Page</button>
+    <button id="registered" class="headerbutton">See Saved</button>
+    <button id="battle" class="headerbutton ">Have A Battle</button>
     <input type="text" placeholder="pokemon name" id="name">
     <p>Page 1/2</p>
 </div>
 <div id="info">
-    <h2></h2>
+    <div id="options">
+        <button id="save" onclick="save()" >Save</button>
+        <button id="cancel">Exit</button>
+        <div class="dropdown">
+            <button class="dropbtn">Add To Deck</button>
+            <div class="dropdown-content">
+                <button id="newdeck">Make New Deck</button>
+            </div>
+        </div>
+        <div id="Names"></div>
+    </div>
     <table id="aspects">
     </table>
     <img id="demo">
     <br>
-    <button id="save" onclick="save()" >Save</button>
-    <button id="cancel">Exit</button>
+
+</div>
+<div id="battlefield">
+    <img id="pokemon1">
+    <img id="pokemon2">
 </div>
 <div id="images">
-    <img id="img1">
-    <img id="img2">
-    <img id="img3">
-    <img id="img4">
-    <img id="img5">
-    <img id="img6">
-    <img id="img7">
-    <img id="img8">
-    <img id="img9">
-    <img id="img10">
-    <img id="img11">
-    <img id="img12">
-    <img id="img13">
-    <img id="img14">
-    <img id="img15">
-    <img id="img16">
-    <img id="img17">
-    <img id="img18">
-    <img id="img19">
-    <img id="img20">
-    <img id="img21">
-    <img id="img22">
-    <img id="img23">
-    <img id="img24">
-    <img id="img25">
-    <img id="img26">
-    <img id="img27">
-    <img id="img28">
-    <img id="img29">
-    <img id="img30">
-    <img id="img31">
-    <img id="img32">
-    <img id="img33">
-    <img id="img34">
-    <img id="img35">
-    <img id="img36">
-    <img id="img37">
-    <img id="img38">
-    <img id="img39">
-    <img id="img40">
-    <img id="img41">
-    <img id="img42">
-    <img id="img43">
-    <img id="img44">
-    <img id="img45">
-    <img id="img46">
-    <img id="img47">
-    <img id="img48">
-    <img id="img49">
-    <img id="img50">
-
-
-
+    <img id="img1" class="animate">
+    <img id="img2" class="animate">
+    <img id="img3" class="animate">
+    <img id="img4" class="animate">
+    <img id="img5" class="animate">
+    <img id="img6" class="animate">
+    <img id="img7" class="animate">
+    <img id="img8" class="animate">
+    <img id="img9" class="animate">
+    <img id="img10" class="animate">
+    <img id="img11" class="animate">
+    <img id="img12" class="animate">
+    <img id="img13" class="animate">
+    <img id="img14" class="animate">
+    <img id="img15" class="animate">
+    <img id="img16" class="animate">
+    <img id="img17" class="animate">
+    <img id="img18" class="animate">
+    <img id="img19" class="animate">
+    <img id="img20" class="animate">
+    <img id="img21" class="animate">
+    <img id="img22" class="animate">
+    <img id="img23" class="animate">
+    <img id="img24" class="animate">
+    <img id="img25" class="animate">
+    <img id="img26" class="animate">
+    <img id="img27" class="animate">
+    <img id="img28" class="animate">
+    <img id="img29" class="animate">
+    <img id="img30" class="animate">
+    <img id="img31" class="animate">
+    <img id="img32" class="animate">
+    <img id="img33" class="animate">
+    <img id="img34" class="animate">
+    <img id="img35" class="animate">
+    <img id="img36" class="animate">
+    <img id="img37" class="animate">
+    <img id="img38" class="animate">
+    <img id="img39" class="animate">
+    <img id="img40" class="animate">
+    <img id="img41" class="animate">
+    <img id="img42" class="animate">
+    <img id="img43" class="animate">
+    <img id="img44" class="animate">
+    <img id="img45" class="animate">
+    <img id="img46" class="animate">
+    <img id="img47" class="animate">
+    <img id="img48" class="animate">
+    <img id="img49" class="animate">
+    <img id="img50" class="animate">
 </div>
 
 </body>
