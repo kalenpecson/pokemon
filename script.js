@@ -10,10 +10,15 @@ $(document).ready(function(){
     });
     $("#registered").hide();
     $("p").hide();
+
+
+
+
     $("#name").keyup(function(e){
         var code= e.which;
         if(code==13){
             var name= $("#name").val();
+            $(".battle").removeClass("battle").addClass("animate");
             $.ajax({
                 url: "https://api.pokemontcg.io/v1/cards?name="+name,
                 type: 'GET',
@@ -28,6 +33,8 @@ $(document).ready(function(){
             });
         }
     });
+
+
 
     $('#newdeck').click(function() {
         $("#pop").fadeIn('slow');
@@ -54,20 +61,28 @@ $(document).ready(function(){
         $("#mask").fadeOut('slow');
     });
 
+
+
     $("#battle").on("click",function(){
         $(".animate").removeClass("animate").addClass("battle");
         alert("Select Two Pokemon Cards!");
     });
-    $(".battle").on("click",function(){
+
+
+
+    $("document").on("click",".battle",function(){
         var pokedata=$(this).data();
-        var pokenumber=pokedata.nationalPokedexNumber;
+        var pokenumber= pokedata.nationalPokedexNumber;
         var pokeurl="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+pokenumber+".png";
         var urlarray=[];
         urlarray.push(pokeurl);
         if(urlarray.length==2){
             $("#battlefield").show();
         }
-    })
+    });
+
+
+
     $("img").on("mouseover",function() {
         $(this).animate({"bottom":"20px"}, 300);
     });
@@ -77,19 +92,26 @@ $(document).ready(function(){
     $("#cancel").on("click",function(){
         $("#info").hide();
     });
+
+
+
+
     $(".animate").on("click",function(){
-        $("#save").show();
-        $("#aspects").empty();
-        $(".animate").removeClass("sticker");
-        $(this).addClass("sticker");
-        var imgobj=$(this).data();
-        console.log(imgobj);
-        var name=imgobj.name;
-        $("#Names").text(name);
-        var pic=imgobj.imageUrl;
-        $("#info").show().val("");
-        $("#demo").attr("src",pic);
-        for(key in imgobj){
+        if($(this).hasClass("battle")){
+
+        }else{
+            $("#save").show();
+            $("#aspects").empty();
+            $(".animate").removeClass("sticker");
+            $(this).addClass("sticker");
+            var imgobj=$(this).data();
+            console.log(imgobj);
+            var name=imgobj.name;
+            $("#Names").text(name);
+            var pic=imgobj.imageUrl;
+            $("#info").show().val("");
+            $("#demo").attr("src",pic);
+            for(key in imgobj){
                 if(keystouse.indexOf(key)!=-1){
                     var a = imgobj[key];
                     if(key == "weaknesses"|| key=="resistances"){
@@ -97,9 +119,14 @@ $(document).ready(function(){
                     }
                     var b= keystouse.indexOf(key);
                     document.getElementById("aspects").innerHTML+="<tr><td>"+aspectarray[b]+"</td><td>"+a+"</td></tr>"
+                }
             }
         }
     });
+
+
+
+
     $("#registered").on("click",function(){
         $("#more").hide();
         $("#less").hide();
@@ -107,8 +134,14 @@ $(document).ready(function(){
         arraytoimage(selectedimages);
     })
 });
+
+
+
 var aspectarray=["Rarity","HP","National Pokedex Number","Type","Weaknesses","Resistances"];
 var keystouse=["rarity","hp","nationalPokedexNumber","types","weaknesses","resistances"];
+
+
+
 function save(){
     var imagelink= $(".sticker").attr("src");
     var imagedata= $(".sticker").data();
@@ -122,6 +155,10 @@ var selectedimages=[];
 var selectedimagesdata=[];
 var emptyarray=[];
 var decks=[];
+
+
+
+
 function arraytoimage(array){
     $("p").show().text("Page 1/1");
     var picture="";
@@ -131,6 +168,9 @@ function arraytoimage(array){
     }
 }
 
+
+
+
 function makedeck(){
     var name= $("#deckname").val();
     var creator= $("#creator").val();
@@ -139,6 +179,11 @@ function makedeck(){
     console.log(decks);
     $(".dropdown-content").append("<div id='"+name+"'>"+name+" by "+creator+"</div>");
 }
+
+
+
+
+
 
 function myFunction(result){
     $("#battle ").hide();
