@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    $("#fight").hide();
     $("#battlefield").hide();
     $("#mask").show();
     $("#info").hide();
@@ -61,21 +62,28 @@ $(document).ready(function(){
         $("#mask").fadeOut('slow');
     });
 
+    var screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    var wid = screenSize.getWidth();
+    var hei = screenSize.getHeight();
+    $("#battlefield").css
 
 
     $("#battle").on("click",function(){
-        $(".animate").removeClass("animate").addClass("battle");
+        urlarray=[];
+        // $(".animate").removeClass("animate").addClass("battle");
         alert("Select Two Pokemon Cards!");
+        $("#fight").show();
     });
 
 
-
-    $("document").on("click",".battle",function(){
-        var pokedata=$(this).data();
+    var urlarray=[];
+    $("#fight").on("click",function(){
+        $("#info").hide();
+        var pokedata=$(this).parent().parent().data();
         var pokenumber= pokedata.nationalPokedexNumber;
         var pokeurl="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+pokenumber+".png";
-        var urlarray=[];
         urlarray.push(pokeurl);
+        console.log(urlarray);
         if(urlarray.length==2){
             $("#battlefield").show();
         }
@@ -97,9 +105,6 @@ $(document).ready(function(){
 
 
     $(".animate").on("click",function(){
-        if($(this).hasClass("battle")){
-
-        }else{
             $("#save").show();
             $("#aspects").empty();
             $(".animate").removeClass("sticker");
@@ -109,7 +114,7 @@ $(document).ready(function(){
             var name=imgobj.name;
             $("#Names").text(name);
             var pic=imgobj.imageUrl;
-            $("#info").show().val("");
+            $("#info").show().val("").data(imgobj);
             $("#demo").attr("src",pic);
             for(key in imgobj){
                 if(keystouse.indexOf(key)!=-1){
@@ -121,7 +126,6 @@ $(document).ready(function(){
                     document.getElementById("aspects").innerHTML+="<tr><td>"+aspectarray[b]+"</td><td>"+a+"</td></tr>"
                 }
             }
-        }
     });
 
 

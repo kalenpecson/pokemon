@@ -100,7 +100,18 @@ img{
 }
 #save:hover{
     background-color: #3e8e41;
-
+}
+#fight{
+    color: white;
+    top: 0;
+    background-color: #4CAF50;
+    height: 50px;
+    border: none;
+    padding: 16px;
+    font-size: 16px;
+}
+#fight:hover{
+    background-color: #3e8e41;
 }
 #addtodeck{
     position: absolute;
@@ -221,4 +232,7 @@ img{
     background-size: 720px 336px;
     width: 720px;
     height: 336px;
+    z-index:4;
+    position:fixed;
+
 }
