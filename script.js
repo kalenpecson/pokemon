@@ -1,11 +1,14 @@
+
+
+
 $(document).ready(function(){
     $("#fight").hide();
     $("#battlefield").hide();
-    $("#mask").show();
     $("#info").hide();
     $("#more").hide();
     $("#less").hide();
     $("#battle").hide();
+    $("#selections").hide();
     $("#save").on("click", function () {
         $("#registered").show();
     });
@@ -62,33 +65,138 @@ $(document).ready(function(){
         $("#mask").fadeOut('slow');
     });
 
-    var screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    var wid = screenSize.getWidth();
-    var hei = screenSize.getHeight();
-    $("#battlefield").css
 
 
     $("#battle").on("click",function(){
         urlarray=[];
-        // $(".animate").removeClass("animate").addClass("battle");
-        alert("Select Two Pokemon Cards!");
+        fightingimages=[];
+        names=[];
+        alert("Select Your Pokemon Card!");
         $("#fight").show();
     });
 
-
     var urlarray=[];
+    var fightingimages=[];
+    var names=[];
+    var hps=[];
+    var moves=[];
+    var respectivedam=[];
+    var x=[];
+
     $("#fight").on("click",function(){
+
         $("#info").hide();
         var pokedata=$(this).parent().parent().data();
-        var pokenumber= pokedata.nationalPokedexNumber;
-        var pokeurl="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+pokenumber+".png";
-        urlarray.push(pokeurl);
-        console.log(urlarray);
-        if(urlarray.length==2){
-            $("#battlefield").show();
+        if(pokedata.supertype!="Pokémon"){
+            alert("Not a Pokémon")
+        }else{
+            if(pokedata.attacks[0].damage==""){
+                var rand= Math.floor((Math.random() * 100) + 1);
+                respectivedam.push(rand);
+            }else {
+                var damage= parseInt(pokedata.attacks[0].damage);
+                respectivedam.push(damage);
+            }
+
+            fightingimages.push(pokedata.imageUrl);
+            moves.push(pokedata.attacks[0].name);
+            names.push(pokedata.name);
+
+            if(pokedata.attacks.length==2){
+                if(pokedata.attacks[1].damage==""){
+                    var rand= Math.floor((Math.random() * 100) + 1);
+                    respectivedam.push(rand);
+                }else {
+                    var damage= parseInt(pokedata.attacks[1].damage);
+                    respectivedam.push(damage);
+                }
+                moves.push(pokedata.attacks[1].name);
+           }else{
+                respectivedam.push("0");
+                moves.push("N/A");
+            }
+
+            $("#firstmove").data([moves[0],respectivedam[0]]).text(moves[0]);
+            $("#secondmove").data([moves[1],respectivedam[1]]).text(moves[1]);
+            hps.push(pokedata.hp);
+            x.push(pokedata.hp);
+            var pokenumber= pokedata.nationalPokedexNumber;
+            var attacks=pokedata.attacks;
+            var health=parseInt(pokedata.hp);
+            var pokeurl="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+pokenumber+".png";
+            urlarray.push(pokeurl);
+            if(urlarray.length==1){
+                alert("Select Opponent");
+            }
+            if(urlarray.length==2){
+                $("#mask").fadeIn('slow');
+                $("#battlefield").show();
+                $("#narration").text("A wild "+names[1]+" has appeared!").delay(3000).text("What will "+names[0]+" do?");
+                $("#firstpokemon").attr("src",fightingimages[0]).delay(800).fadeOut("slow");
+                $("#secondpokemon").attr("src",fightingimages[1]).delay(800).fadeOut("slow");
+                $("#firstpokemon").attr("src",urlarray[0]).fadeIn("slow");
+                $("#secondpokemon").attr("src",urlarray[1]).fadeIn("slow");
+                document.getElementById("battlemusic").play();
+                $("#selections").show();
+                $("#firstname").text(names[0]);
+                $("#secondname").text(names[1]);
+                document.getElementById("firsthp").innerHTML+=hps[0]+"/"+hps[0]+"<div id='firstblue'></div><div id='firstwhite'></div>";
+                document.getElementById("secondhp").innerHTML+=hps[1]+"/"+hps[1]+"<div id='secondblue'></div><div id='secondwhite'></div>";
+            }
         }
     });
 
+        $(".move").on("click",function () {
+            var stuffarray= $(this).data();
+            var d= x[1];
+            var e= hps[1];
+            console.log(d);
+            var a= stuffarray[0];
+            var b= stuffarray[1];
+            var c= $("#secondblue").width();
+            c= parseInt(c);
+            console.log(b);
+            console.log(c);
+            var newwidth= (d-b)*(200/e);
+            console.log(newwidth);
+            if(newwidth>=1){
+                $("#secondblue").css("width", newwidth+"px");
+            }else{
+                $("#secondblue").css({"width": "0px"},"slow");
+                $("#narration").text("Wild " +names[1]+" fainted!");
+                document.getElementById("battlemusic").pause();
+                $("#soundeffects").attr("src","http://66.90.93.122/ost/pokemon-gameboy-sound-collection/kccmwnxi/108-victory%20%28vs%20wild%20pokemon%29.mp3");
+                document.getElementById("battlemusic").load();
+                document.getElementById("battlemusic").play();
+            }
+
+            x[1]=d-b;
+            var which=Math.floor((Math.random() * 2) + 2);
+            if(which==3 && respectivedam[3]=="0"){
+                which=2;
+            }
+            var f= x[0];
+            var w= hps[0];
+            console.log(d);
+            var q= moves[which];
+            var z= respectivedam[which];
+            var r= $("#firstblue").width();
+            r= parseInt(r);
+            var newwidth= (f-z)*(200/w);
+            console.log(newwidth);
+            if(newwidth>=1){
+                $("#firstblue").css("width", newwidth+"px");
+            }else{
+                $("#firstblue").css({"width": "0px"},"slow");
+                // $("#narration").text("Wild " +names[1]+" fainted!");
+                // document.getElementById("battlemusic").pause();
+                // $("#soundeffects").attr("src","http://66.90.93.122/ost/pokemon-gameboy-sound-collection/kccmwnxi/108-victory%20%28vs%20wild%20pokemon%29.mp3");
+                // document.getElementById("battlemusic").load();
+                // document.getElementById("battlemusic").play();
+            }
+
+            x[0]=f-z;
+        });
 
 
     $("img").on("mouseover",function() {

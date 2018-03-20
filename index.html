@@ -8,11 +8,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style.css"/>
 </head>
-<body>
-
-
 <div id="pop">
     <b>Make A New Deck</b>
+    <br>
     <div id="contentPop">
         <input id="deckname" placeholder="Deck Name">
         <input id="creator" placeholder="Creator">
@@ -68,8 +66,36 @@
 
 </div>
 <div id="battlefield">
-    <img id="pokemon1">
-    <img id="pokemon2">
+    <audio id="battlemusic">
+        <source  id="soundeffects" src="http://66.90.93.122/ost/pokemon-gameboy-sound-collection/ravcdrgo/107-battle%20%28vs%20wild%20pokemon%29.mp3" type="audio/mpeg">
+    </audio>
+    <div id="firsthealth">
+        <table id="firststats">
+            <tr id="firstname"></tr>
+            <tr id="firsthp"></tr>
+            <tr></tr>
+        </table>
+    </div>
+    <div id="secondhealth">
+        <table id="secondstats">
+            <tr id="secondname"></tr>
+            <tr id="secondhp"></tr>
+            <tr></tr>
+        </table>
+    </div>
+    <img id="firstpokemon">
+    <img id="secondpokemon">
+</div>
+<div id="selections">
+    <table>
+        <tr>
+            <div id="narration"></div>
+        </tr>
+        <tr id="attacksoptions">
+            <td><button id="firstmove" class="move"></button></td>
+            <td><button id="secondmove" class="move"></button></td>
+        </tr>
+    </table>
 </div>
 <div id="images">
     <img id="img1" class="animate battle">

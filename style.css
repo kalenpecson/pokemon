@@ -214,25 +214,129 @@ img{
     background:#ffffff;
 }
 
-#close {
-    float:right;
-    margin-right:5px;
-    cursor:pointer;
-    font-size:12px;
-    font-weight:bold;
-    color:#FFFFFF;
-    background-color:#666666;
-    width:12px;
-    position:relative;
-    margin-top:-1px;
-    text-align:center;
-}
 #battlefield{
     background-image: url("https://i635.photobucket.com/albums/uu74/PocketmonmMaster/1_zps5e1a5a12.png");
     background-size: 720px 336px;
     width: 720px;
     height: 336px;
-    z-index:4;
-    position:fixed;
+    z-index:555;
+    position: fixed;
+    margin-left: 350px;
+}
+
+#firstpokemon{
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    bottom: -20px;
+    margin-left: 100px;
+}
+
+#secondpokemon{
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    margin-left: 450px;
+    margin-bottom: 110px;
+}
+#secondhealth{
+    background-color: white;
+    position: absolute;
+    height: 70px;
+    width: 250px;
+    margin-left: 0;
+    margin-top: 0;
+    border: black solid;
+}
+#firsthealth {
+    background-color: white;
+    position: absolute;
+    height: 70px;
+    width: 250px;
+    right: 0;
+    bottom: 0;
+    border: black solid;
+}
+
+#firstblue{
+    position: absolute;
+    height: 4px;
+    width: 200px;
+    background-color: blue;
+    z-index: 600;
+}
+
+#secondblue{
+    position: absolute;
+    height: 4px;
+    width: 200px;
+    background-color: blue;
+    z-index: 600;
+}
+
+#firstwhite{
+    position: absolute;
+    height: 4px;
+    width: 200px;
+    background-color: darkgray;
+    z-index: 599;
+}
+
+#secondwhite{
+    position: absolute;
+    height: 4px;
+    width: 200px;
+    background-color: darkgrey;
+    z-index: 599;
+}
+#selections{
+    width: 716px;
+    height: 150px;
+    z-index: 501;
+    position: absolute;
+    margin-left: 350px;
+    background-color: white;
+    margin-top: 336px;
+    border: black solid;
+}
+#narration{
+    position: absolute;
+    height: 50px ;
+    width: 712px;
+    border: black solid;
+    background-color: white;
+    font-size: large;
+    text-align: left;
+
+}
+#firstmove{
+    font-size: xx-large;
+    text-align: left;
+    position: absolute;
+    height: 97px;
+    width: 358px;
+    left: 0;
+    background-color: white;
+    border: black solid;
+    top: 56px;
+}
+#firstmove:hover{
+    background-color: darkgray;
+
+}
+
+#secondmove{
+    font-size: xx-large;
+    text-align: left;
+    position: absolute;
+    height: 97px;
+    width: 358px;
+    right: 0;
+    background-color: white;
+    border: black solid;
+    top: 56px;
+}
+#secondmove:hover{
+    background-color: darkgray;
 
 }
