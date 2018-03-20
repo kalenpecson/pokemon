@@ -142,6 +142,7 @@ $(document).ready(function(){
                 $("#secondname").text(names[1]);
                 document.getElementById("firsthp").innerHTML+=hps[0]+"/"+hps[0]+"<div id='firstblue'></div><div id='firstwhite'></div>";
                 document.getElementById("secondhp").innerHTML+=hps[1]+"/"+hps[1]+"<div id='secondblue'></div><div id='secondwhite'></div>";
+
             }
         }
     });
@@ -188,11 +189,11 @@ $(document).ready(function(){
                 $("#firstblue").css("width", newwidth+"px");
             }else{
                 $("#firstblue").css({"width": "0px"},"slow");
-                // $("#narration").text("Wild " +names[1]+" fainted!");
-                // document.getElementById("battlemusic").pause();
-                // $("#soundeffects").attr("src","http://66.90.93.122/ost/pokemon-gameboy-sound-collection/kccmwnxi/108-victory%20%28vs%20wild%20pokemon%29.mp3");
-                // document.getElementById("battlemusic").load();
-                // document.getElementById("battlemusic").play();
+                $("#narration").text(names[0]+" fainted!");
+                document.getElementById("battlemusic").pause();
+                $("#soundeffects").attr("src","http://66.90.93.122/ost/pokemon-ruby-sapphire-music-super-complete/yxircljl/038%20Lose.mp3");
+                document.getElementById("battlemusic").load();
+                document.getElementById("battlemusic").play();
             }
 
             x[0]=f-z;
@@ -291,10 +292,6 @@ function makedeck(){
     console.log(decks);
     $(".dropdown-content").append("<div id='"+name+"'>"+name+" by "+creator+"</div>");
 }
-
-
-
-
 
 
 function myFunction(result){

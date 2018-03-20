@@ -293,7 +293,7 @@ img{
     width: 716px;
     height: 150px;
     z-index: 501;
-    position: absolute;
+    position: fixed;
     margin-left: 350px;
     background-color: white;
     margin-top: 336px;
