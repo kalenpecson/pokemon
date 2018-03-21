@@ -67,6 +67,7 @@ $(document).ready(function(){
 
 
 
+
     $("#battle").on("click",function(){
         urlarray=[];
         fightingimages=[];
@@ -131,7 +132,7 @@ $(document).ready(function(){
             if(urlarray.length==2){
                 $("#mask").fadeIn('slow');
                 $("#battlefield").show();
-                $("#narration").text("A wild "+names[1]+" has appeared!").delay(3000).text("What will "+names[0]+" do?");
+                $("#narration").text("A wild "+names[1]+" has appeared!").fadeIn().delay(3000).fadeOut().delay(3000).fadeIn().text("What will "+names[0]+" do?");
                 $("#firstpokemon").attr("src",fightingimages[0]).delay(800).fadeOut("slow");
                 $("#secondpokemon").attr("src",fightingimages[1]).delay(800).fadeOut("slow");
                 $("#firstpokemon").attr("src",urlarray[0]).fadeIn("slow");
@@ -268,6 +269,7 @@ var selectedimages=[];
 var selectedimagesdata=[];
 var emptyarray=[];
 var decks=[];
+var currentdeck=1;
 
 
 
@@ -281,6 +283,11 @@ function arraytoimage(array){
     }
 }
 
+$(".dropdown").change(function(){
+    var selectedvalue=$(".dropdown").val();
+    console.log(decks[selectedvalue]);
+});
+
 
 
 
@@ -290,7 +297,7 @@ function makedeck(){
     var deck=[name,creator];
     decks.push(deck);
     console.log(decks);
-    $(".dropdown-content").append("<div id='"+name+"'>"+name+" by "+creator+"</div>");
+    $(".dropdown-content").append("<button  class='dropbtn' value='"+(currentdeck++)+"'>"+name+" by "+creator+"</button>");
 }
 
 
