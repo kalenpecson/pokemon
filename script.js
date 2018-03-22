@@ -1,6 +1,3 @@
-
-
-
 $(document).ready(function(){
     $("#fight").hide();
     $("#battlefield").hide();
@@ -15,7 +12,7 @@ $(document).ready(function(){
     $("#registered").hide();
     $("p").hide();
 
-
+    slowspell("hello",narration);
 
 
     $("#name").keyup(function(e){
@@ -162,8 +159,11 @@ $(document).ready(function(){
             var newwidth= (d-b)*(200/e);
             console.log(newwidth);
             if(newwidth>=1){
+                document.getElementById("secondhp").innerHTML=(d-b)+"/"+e+"<div id='secondblue'></div><div id='secondwhite'></div>";
                 $("#secondblue").css("width", newwidth+"px");
+
             }else{
+                document.getElementById("secondhp").innerHTML="0/"+e+"<div id='secondblue'></div><div id='secondwhite'></div>";
                 $("#secondblue").css({"width": "0px"},"slow");
                 $("#narration").text("Wild " +names[1]+" fainted!");
                 document.getElementById("battlemusic").pause();
@@ -187,8 +187,10 @@ $(document).ready(function(){
             var newwidth= (f-z)*(200/w);
             console.log(newwidth);
             if(newwidth>=1){
+                document.getElementById("firsthp").innerHTML=(f-z)+"/"+w+"<div id='firstblue'></div><div id='firstwhite'></div>";
                 $("#firstblue").css("width", newwidth+"px");
             }else{
+                document.getElementById("firsthp").innerHTML="0/"+w+"<div id='firstblue'></div><div id='firstwhite'></div>";
                 $("#firstblue").css({"width": "0px"},"slow");
                 $("#narration").text(names[0]+" fainted!");
                 document.getElementById("battlemusic").pause();
@@ -211,6 +213,17 @@ $(document).ready(function(){
         $("#info").hide();
     });
 
+
+    function slowspell(text, id){
+        var letterarray= text.split("");
+        var trueid= id.attributes.id.nodeValue;
+        var selectedtext= $("#"+trueid);
+        var spelling="";
+        for (var i=0; i<letterarray.length;i++){
+            spelling+=letterarray[i];
+            selectedtext.text(spelling).fadeIn().delay(100).fadeOut();
+        }
+    }
 
 
 
