@@ -178,13 +178,13 @@ img{
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
-.dropdown-content option {
+.dropdown-content button {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
-.dropdown-content option:hover {background-color: #ddd}
+.dropdown-content button:hover {background-color: #ddd}
 
 .dropdown:hover .dropdown-content {
     display: block;
@@ -339,4 +339,13 @@ img{
 #secondmove:hover{
     background-color: darkgray;
 
+}
+.deckbutton{
+    width:165px;
+    margin-right: 0;
+    margin-left:0 ;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
 }

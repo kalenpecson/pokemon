@@ -12,7 +12,7 @@ $(document).ready(function(){
     $("#registered").hide();
     $("p").hide();
 
-    slowspell("hello",narration);
+    // slowspell("hello",narration);
 
 
     $("#name").keyup(function(e){
@@ -225,6 +225,12 @@ $(document).ready(function(){
         }
     }
 
+    $(".deckbutton").on("click",function(){
+        var decknumber= $(this).val();
+        var data=$("#info").data();
+        decks[decknumber].push(data);
+        console.log(decks);
+    });
 
 
     $(".animate").on("click",function(){
@@ -282,7 +288,7 @@ var selectedimages=[];
 var selectedimagesdata=[];
 var emptyarray=[];
 var decks=[];
-var currentdeck=1;
+var currentdeck=0;
 
 
 
@@ -296,12 +302,6 @@ function arraytoimage(array){
     }
 }
 
-$(".dropdown").change(function(){
-    var selectedvalue=$(".dropdown").val();
-    console.log(decks[selectedvalue]);
-});
-
-
 
 
 function makedeck(){
@@ -309,8 +309,9 @@ function makedeck(){
     var creator= $("#creator").val();
     var deck=[name,creator];
     decks.push(deck);
-    console.log(decks);
-    $(".dropdown-content").append("<button  class='dropbtn' value='"+(currentdeck++)+"'>"+name+" by "+creator+"</button>");
+    console.log(currentdeck);
+    $(".dropdown-content").append("<button  class='deckbutton' id='button"+currentdeck+"' value='"+currentdeck+"'>"+name+" by "+creator+"</button>");
+    currentdeck++;
 }
 
 
