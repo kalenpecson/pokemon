@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    $("#viewdecks").hide();
     $("#fight").hide();
     $("#battlefield").hide();
     $("#info").hide();
@@ -11,8 +12,6 @@ $(document).ready(function(){
     });
     $("#registered").hide();
     $("p").hide();
-
-    // slowspell("hello",narration);
 
 
     $("#name").keyup(function(e){
@@ -213,26 +212,6 @@ $(document).ready(function(){
         $("#info").hide();
     });
 
-
-    function slowspell(text, id){
-        var letterarray= text.split("");
-        var trueid= id.attributes.id.nodeValue;
-        var selectedtext= $("#"+trueid);
-        var spelling="";
-        for (var i=0; i<letterarray.length;i++){
-            spelling+=letterarray[i];
-            selectedtext.text(spelling).fadeIn().delay(100).fadeOut();
-        }
-    }
-
-    $(".deckbutton").on("click",function(){
-        var decknumber= $(this).val();
-        var data=$("#info").data();
-        decks[decknumber].push(data);
-        console.log(decks);
-    });
-
-
     $(".animate").on("click",function(){
             $("#save").show();
             $("#aspects").empty();
@@ -268,6 +247,11 @@ $(document).ready(function(){
     })
 });
 
+function addtodeck(value){
+    var data=$("#info").data();
+    decks[value].push(data);
+    console.log(decks);
+}
 
 
 var aspectarray=["Rarity","HP","National Pokedex Number","Type","Weaknesses","Resistances"];
@@ -310,8 +294,14 @@ function makedeck(){
     var deck=[name,creator];
     decks.push(deck);
     console.log(currentdeck);
-    $(".dropdown-content").append("<button  class='deckbutton' id='button"+currentdeck+"' value='"+currentdeck+"'>"+name+" by "+creator+"</button>");
+    $("#second").append("<button  class='deckbutton' onclick='addtodeck("+currentdeck+")'>"+name+" by "+creator+"</button>");
+    $("#first").append("<button  class='deckbutton' onclick='displaydeck("+currentdeck+")'>"+name+" by "+creator+"</button>");
     currentdeck++;
+    $("#viewdecks").show();
+}
+
+function displaydeck(value){
+
 }
 
 

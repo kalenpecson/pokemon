@@ -19,8 +19,7 @@
     <button class="close">Cancel</button>
 </div>
 
-<div id="mask">
-</div>
+<div id="mask"></div>
 
 <header>
 
@@ -43,7 +42,11 @@
     <button id="less" class="headerbutton">Previous Page</button>
     <button id="registered" class="headerbutton">See Saved</button>
     <button id="battle" class="headerbutton ">Have A Battle</button>
-    <input type="text" placeholder="pokemon name" id="name">
+    <div  id="viewdecks" class="dropdown">
+        <button id="seedeckdrop" class="dropbtn">See Deck</button>
+        <div class="dropdown-content" id="first">
+        </div>
+    </div>    <input type="text" placeholder="pokemon name" id="name">
     <p>Page 1/2</p>
 </div>
 <div id="info">
@@ -52,7 +55,7 @@
         <button id="cancel">Exit</button>
         <div class="dropdown">
             <button class="dropbtn">Add To Deck</button>
-            <div class="dropdown-content">
+            <div id="second" class="dropdown-content">
                 <button id="newdeck">Make New Deck</button>
             </div>
         </div>

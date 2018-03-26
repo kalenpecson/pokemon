@@ -58,7 +58,7 @@ img{
 }
 #images {
     position: relative;
-    margin-top: 30px;
+    margin-top: 60px;
     text-align: center ;
 }
 #info{
@@ -348,4 +348,9 @@ img{
     padding: 16px;
     font-size: 16px;
     border: none;
+}
+
+#seedeckdrop{
+    background-color: black;
+    color: white;
 }
