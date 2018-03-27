@@ -39,9 +39,7 @@ $(document).ready(function(){
     $('#newdeck').click(function() {
         $("#pop").fadeIn('slow');
         $("#mask").fadeIn('slow');
-        $.post("contentPopup.html", function(data) {
-            $("#contentPop").html(data);
-        });
+
     });
     $("#mask").hide();
     $("#pop").hide();
@@ -248,8 +246,8 @@ $(document).ready(function(){
 });
 
 function addtodeck(value){
-    var data=$("#info").data();
-    decks[value].push(data);
+    var carddata=$("#info").data();
+    decks[value].push(carddata);
     console.log(decks);
 }
 
@@ -301,7 +299,18 @@ function makedeck(){
 }
 
 function displaydeck(value){
-
+    var selecteddeck= decks[value];
+    var deckname= selecteddeck[0];
+    var deckcreator=selecteddeck[1];
+    var selectedcards=[];
+    for(var i=0; i<(selecteddeck.length-2);i++){
+        selectedcards.push(selecteddeck[i+2]);
+    }
+    arraytoimage(emptyarray);
+    for(var i=0; i<selectedcards.length;i++){
+        var picture=selectedcards[i].imageUrl;
+        $("#img"+(i+1)).attr("src","").attr('src',picture).data(selectedcards[i]);
+    }
 }
 
 
