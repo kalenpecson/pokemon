@@ -354,3 +354,22 @@ img{
     background-color: black;
     color: white;
 }
+#close{
+    position: absolute;
+    z-index: 10000;
+    top:0;
+    right:0;
+    background-color: white;
+    color: black;
+    height: 20px;
+    width:50px;
+    text-align: center;
+    border: 2px solid black;
+}
+#decknameandcreator{
+    text-align: center;
+    margin-top: 50px;
+    font-weight: bolder;
+    margin-bottom: 30px;
+    font-size: xx-large;
+}

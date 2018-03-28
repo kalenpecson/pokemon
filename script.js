@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    $("#decknameandcreator").hide();
     $("#viewdecks").hide();
     $("#fight").hide();
     $("#battlefield").hide();
@@ -15,6 +16,7 @@ $(document).ready(function(){
 
 
     $("#name").keyup(function(e){
+        $("#decknameandcreator").hide();
         var code= e.which;
         if(code==13){
             var name= $("#name").val();
@@ -60,12 +62,24 @@ $(document).ready(function(){
     });
 
 
-
+    $("#close").on("click",function(){
+       $("#mask").hide();
+       $("#battlefield").hide();
+       $("#selections").hide();
+       document.getElementById("battlemusic").pause();
+       $("#fight").hide();
+    });
 
     $("#battle").on("click",function(){
+        $("#decknameandcreator").hide();
+        $("#soundeffects").attr("src","http://66.90.93.122/ost/pokemon-gameboy-sound-collection/ravcdrgo/107-battle%20%28vs%20wild%20pokemon%29.mp3");
         urlarray=[];
         fightingimages=[];
         names=[];
+        hps=[];
+        moves=[];
+        respectivedam=[];
+        x=[];
         alert("Select Your Pokemon Card!");
         $("#fight").show();
     });
@@ -79,7 +93,7 @@ $(document).ready(function(){
     var x=[];
 
     $("#fight").on("click",function(){
-
+        $("#decknameandcreator").hide();
         $("#info").hide();
         var pokedata=$(this).parent().parent().data();
         if(pokedata.supertype!="Pokémon"){
@@ -126,17 +140,18 @@ $(document).ready(function(){
             if(urlarray.length==2){
                 $("#mask").fadeIn('slow');
                 $("#battlefield").show();
-                $("#narration").text("A wild "+names[1]+" has appeared!").fadeIn().delay(3000).fadeOut().delay(3000).fadeIn().text("What will "+names[0]+" do?");
+                $("#narration").text("What will "+names[0]+" do?").fadeIn();
                 $("#firstpokemon").attr("src",fightingimages[0]).delay(800).fadeOut("slow");
                 $("#secondpokemon").attr("src",fightingimages[1]).delay(800).fadeOut("slow");
                 $("#firstpokemon").attr("src",urlarray[0]).fadeIn("slow");
                 $("#secondpokemon").attr("src",urlarray[1]).fadeIn("slow");
+                document.getElementById("battlemusic").load();
                 document.getElementById("battlemusic").play();
                 $("#selections").show();
                 $("#firstname").text(names[0]);
                 $("#secondname").text(names[1]);
-                document.getElementById("firsthp").innerHTML+=hps[0]+"/"+hps[0]+"<div id='firstblue'></div><div id='firstwhite'></div>";
-                document.getElementById("secondhp").innerHTML+=hps[1]+"/"+hps[1]+"<div id='secondblue'></div><div id='secondwhite'></div>";
+                document.getElementById("firsthp").innerHTML=hps[0]+"/"+hps[0]+"<div id='firstblue'></div><div id='firstwhite'></div>";
+                document.getElementById("secondhp").innerHTML=hps[1]+"/"+hps[1]+"<div id='secondblue'></div><div id='secondwhite'></div>";
 
             }
         }
@@ -249,14 +264,6 @@ $(document).ready(function(){
 function addtodeck(value){
     var carddata={};
     var imgobj=$("#info").data();
-    // for(key in imgobj){
-    //     if(keystouse.indexOf(key)!=-1){
-    //         var a = imgobj[key];
-    //         if(key == "weaknesses"|| key=="resistances"){
-    //             a= a[0].type +" "+ a[0].value;
-    //         }
-    //         var b= keystouse.indexOf(key);
-    //     }
     carddata.hp=imgobj.hp;
     carddata.resistances=imgobj.resistances;
     carddata.nationalPokedexNumber=imgobj.nationalPokedexNumber;
@@ -316,6 +323,8 @@ function makedeck(){
 }
 
 function displaydeck(value){
+    $("#more").hide();
+    $("#less").hide();
     var selecteddeck= decks[value];
     var deckname= selecteddeck[0];
     var deckcreator=selecteddeck[1];
@@ -328,6 +337,10 @@ function displaydeck(value){
         var picture=selectedcards[i].imageUrl;
         $("#img"+(i+1)).attr("src","").attr('src',picture).data(selectedcards[i]);
     }
+    $("#decknameandcreator").text(deckname+" by "+deckcreator);
+    $("#decknameandcreator").show();
+
+
 }
 
 
