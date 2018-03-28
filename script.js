@@ -245,8 +245,25 @@ $(document).ready(function(){
     })
 });
 
+
 function addtodeck(value){
-    var carddata=$("#info").data();
+    var carddata={};
+    var imgobj=$("#info").data();
+    // for(key in imgobj){
+    //     if(keystouse.indexOf(key)!=-1){
+    //         var a = imgobj[key];
+    //         if(key == "weaknesses"|| key=="resistances"){
+    //             a= a[0].type +" "+ a[0].value;
+    //         }
+    //         var b= keystouse.indexOf(key);
+    //     }
+    carddata.hp=imgobj.hp;
+    carddata.resistances=imgobj.resistances;
+    carddata.nationalPokedexNumber=imgobj.nationalPokedexNumber;
+    carddata.types=imgobj.types;
+    carddata.weaknesses=imgobj.weaknesses;
+    carddata.rarity=imgobj.rarity;
+    carddata.imageUrl=imgobj.imageUrl;
     decks[value].push(carddata);
     console.log(decks);
 }
